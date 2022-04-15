@@ -20,8 +20,8 @@ const MainPageComponent = () => {
         //parse the response
         const parsedResponse = await apiResponse.json()
         //if successful add item to state
-        console.log(parsedResponse)
-        if(parsedResponse.success){
+        console.log(apiResponse)
+        if(apiResponse.status === 201){
             setMovies([...movies, newMovie])
         }else{
             setNewMovieServerError(parsedResponse.data)
@@ -36,15 +36,14 @@ const MainPageComponent = () => {
             method: 'DELETE'
             })
             //parse response
-            const parsedResponse = await apiResponse.json()
-            if(parsedResponse.success){
-                const newMovie = movies.filter(movie => movie._id !== idToDelete)
+            // const parsedResponse = await apiResponse.json()
+            // if(parsedResponse.success){
+                const newMovie = movies.filter((movie) => movie.id !== idToDelete)
                 setMovies(newMovie)
-            }
-            else{
-                //TODO
-            }
-            console.log(parsedResponse)
+            // }
+            // else{
+            //     //TODO
+            // }
         }catch(err){
             console.log(err)
         }
@@ -61,9 +60,9 @@ const MainPageComponent = () => {
             }
         })
             const parsedResponse = await apiResponse.json();
-        if(parsedResponse.success){
+        if(apiResponse.status === 200 ){
         //one line version that uses a function to check the item to see if its the one to update, if not send old version
-            const newMovie = movies.map(movie => movie._id === idToUpdate ? movieToUpdate : movie)
+            const newMovie = movies.map(movie => movie.id === idToUpdate ? movieToUpdate : movie)
             setMovies(newMovie)
         }else{
             //TODO
@@ -88,7 +87,7 @@ const MainPageComponent = () => {
             createNewMovie={createNewMovie}>
         </NewMovieComponent>
         {movies.map((movie)=> {
-            return (<MovieComponent key ={movie._id} movie={movie} updateMovie={updateMovie} deleteMovie={deleteMovie}></MovieComponent>)
+            return (<MovieComponent key ={movie.id} movie={movie} updateMovie={updateMovie} deleteMovie={deleteMovie}></MovieComponent>)
         })}
         </div>
         )

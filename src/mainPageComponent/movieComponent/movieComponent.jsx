@@ -21,7 +21,7 @@ const MovieComponent = (props) => {
     }
     const submitUpdateMovie = (e) => {
         e.preventDefault();
-        props.updateMovie(props.movie._id, updateMovie);
+        props.updateMovie(props.movie.id, updateMovie);
         setShowing(false);
         console.log("updating Movie!")
     }
@@ -54,7 +54,7 @@ const MovieComponent = (props) => {
                 <h4>Raiting: {props.movie.raiting}</h4>
                 <h5>Bio: {props.movie.bio}</h5>
             </div>
-            <button onClick={() => {props.deleteMovie(props.movie._id)}}>Delete</button>
+            <button onClick={() => {props.deleteMovie(props.movie.id)}}>Delete</button>
             <br></br>
         </>
     )
