@@ -74,14 +74,13 @@ const MainPageComponent = () => {
         try{
             const movies = await fetch("https://ancient-thicket-31941.herokuapp.com/api/movies")
             const parsedMovies = await movies.json();
-            setMovies(parsedMovies.data)
-
+            setMovies(parsedMovies)
         }catch(err){
             console.log(err)
             //TODO
         }
     }
-    useEffect(()=>{getMovies()}, [])
+    useEffect(()=>{getMovies();}, [])
     return (
         <div>
         <NewMovieComponent
@@ -89,7 +88,7 @@ const MainPageComponent = () => {
             createNewMovie={createNewMovie}>
         </NewMovieComponent>
         {movies.map((movie)=> {
-            return <MovieComponent key ={movie._id} movie={movie} updateMovie={updateMovie} deleteMovie={deleteMovie}></MovieComponent>
+            return (<MovieComponent key ={movie._id} movie={movie} updateMovie={updateMovie} deleteMovie={deleteMovie}></MovieComponent>)
         })}
         </div>
         )

@@ -7,7 +7,7 @@ const NewMovieComponent = (props) => {
     const [newMovie, setNewMovie] = useState({
         name: "",
         genre: "",
-        raiting: Number,
+        raiting: 0,
         bio: "",
     })
     //function that will shift between showing not showing, gets called in buttons on click
@@ -39,7 +39,7 @@ const NewMovieComponent = (props) => {
         setNewMovie({
             name: "",
             genre: "",
-            raiting: Number,
+            raiting: 0,
             bio: "",
         })
         setIsValidState({
