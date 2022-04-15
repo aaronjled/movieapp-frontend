@@ -88,8 +88,6 @@ const MainPageComponent = () => {
             newMovieServerError={newMovieServerError}
             createNewMovie={createNewMovie}>
         </NewMovieComponent>
-        <br></br>
-        <br></br>
         {movies.map((movie)=> {
             return <MovieComponent key ={movie._id} movie={movie} updateMovie={updateMovie} deleteMovie={deleteMovie}></MovieComponent>
         })}
